@@ -8,7 +8,7 @@ use Larangular\Installable\Support\InstallableServiceProvider as ServiceProvider
 class SpreadsheetImportServiceProvider extends ServiceProvider implements HasInstallable {
 
     public function boot(): void {
-        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         $this->declareMigrationGlobal();
         $this->declareMigrationSpreadsheetFileRows();
     }
@@ -24,10 +24,10 @@ class SpreadsheetImportServiceProvider extends ServiceProvider implements HasIns
         $this->declareMigration([
             'connection'   => 'mysql',
             'migrations'   => [
-                'local_path' => __DIR__ . '/database/migrations',
+                'local_path' => __DIR__ . '/../database/migrations',
             ],
             'seeds'        => [
-                'local_path' => __DIR__ . '/database/seeds',
+                'local_path' => __DIR__ . '/../database/seeds',
             ],
             'seed_classes' => [],
         ]);
