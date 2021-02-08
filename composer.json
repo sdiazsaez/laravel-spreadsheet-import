@@ -1,0 +1,29 @@
+{
+    "name"       : "larangular/spreadsheet-import",
+    "description": "spreadsheet-import",
+    "license"    : "MIT",
+    "authors"    : [
+        {
+            "name" : "Simon Diaz",
+            "email": "sdiaz.sz@gmail.com"
+        }
+    ],
+    "require"    : {
+        "php"                          : ">=7.1",
+        "illuminate/support"           : "^7.0|^8.0",
+        "illuminate/routing"           : "^7.0|^8.0",
+        "larangular/support"           : "^0.2.0",
+        "larangular/routing-controller": "^0.1.0|^0.2.0|^0.3.0",
+        "larangular/migration-package" : "^0.1.0|^0.2.0",
+        "larangular/installable"       : "^0.1.0|^0.2.0",
+        "jedrzej/searchable"           : "^0.0.14",
+        "larangular/file-manager"      : "^0.2.0",
+        "cyber-duck/laravel-excel"     : "^2.0",
+        "jedrzej/withable"             : "^0.0.6"
+    },
+    "autoload"   : {
+        "psr-4": {
+            "Larangular\\SpreadsheetImport\\": "./src"
+        }
+    }
+}
