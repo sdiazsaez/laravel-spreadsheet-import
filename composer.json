@@ -25,5 +25,12 @@
         "psr-4": {
             "Larangular\\SpreadsheetImport\\": "./src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Larangular\\SpreadsheetImport\\SpreadsheetImportServiceProvider"
+            ]
+        }
     }
 }
