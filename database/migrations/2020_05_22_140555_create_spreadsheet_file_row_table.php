@@ -20,8 +20,6 @@ class CreateSpreadsheetFileRowTable extends Migration {
                   ->unsigned();
             $table->integer('file_id')
                   ->unsigned();
-            $table->integer('type');
-            $table->integer('status');
             $table->integer('row_number')
                   ->unsigned();
             $table->longText('row_value');
