@@ -6,10 +6,14 @@ use Cyberduck\LaravelExcel\Contract\ParserInterface;
 use Illuminate\Support\Arr;
 
 class Parser implements ParserInterface {
+
+    private $parsedHeader;
+
     public function transform($array, $header): array {
+        $header = $this->getHeader($header);
         $response = [];
         for ($i = 0, $iMax = count($header); $i < $iMax; $i++) {
-            $value = ($array[$i] === '')
+            $value = (empty($array[$i]) || @$array[$i] === '')
                 ? null
                 : $array[$i];
 
@@ -17,5 +21,24 @@ class Parser implements ParserInterface {
         }
 
         return $response;
+    }
+
+    protected function getHeader($header) {
+        if (!isset($this->parsedHeader)) {
+            foreach ($header as $key => $value) {
+                $this->parsedHeader[$key] = $this->cleanupLabel($value);
+            }
+        }
+        return $this->parsedHeader;
+    }
+
+    private function cleanupLabel(string $value): string {
+        return preg_replace([
+            '/[^a-zA-Z\.\_\s]/',
+            '/\s+/',
+        ], [
+            '',
+            '_',
+        ], strtolower(trim(iconv('UTF-8', 'ASCII//TRANSLIT', $value))));
     }
 }
