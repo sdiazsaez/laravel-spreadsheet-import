@@ -13,7 +13,8 @@ class Parser implements ParserInterface {
         $header = $this->getHeader($header);
         $response = [];
         for ($i = 0, $iMax = count($header); $i < $iMax; $i++) {
-            $value = (empty($array[$i]) || @$array[$i] === '')
+            //careful here it may exclude 0 values
+            $value = ((is_array(@$array[$i]) && empty(@$array[$i])) || @$array[$i] === '' || !isset($array[$i]))
                 ? null
                 : $array[$i];
 
